@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.tymeleaf.org/extras/spring-security"
+>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body style="background-color:aqua; padding:10px; margin:10px">
+<div style="text-align:center">
+<h3>Welcome, Start your Courses</h3>
+<p>
+Profile: <span sec:authentication="principal.username"></span><br/>
+Designation: <span sec:authentication="principal.authorities"></span>
+</p>
+
+<hr>
+
+<a href="https://www.w3schools.com">JavaFullStack Development</a><br><br>
+<a href="https://www.w3schools.com">MERNStack Development</a><br><br>
+<a href="https://www.w3schools.com">Artificial Inteligence</a><br><br>
+<a href="https://www.w3schools.com">DataScience Course</a>
+</div>
+<div>
+<p sec:authorize="hasRole('MANAGER')">
+<a th:href="@{/leaders}">Leadership Meeting</a>
+(Only for Manager Peers).
+</p>
+</div>
+
+<div sec:authorize="hasRole('ADMIN')">
+<p>
+
+
+<a th:href="@{/systems}">IT Support Task</a>
+(Only for Admin Peers).
+</p>
+
+
+</div>
+
+
+<form action="#" th:action="@{/logout}" method="post">
+<input type="submit" value="Logout" class="btn btn-outline-primary mt-2"/>
+
+</form>
+</body>
+</html>
