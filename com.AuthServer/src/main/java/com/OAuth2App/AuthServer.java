@@ -14,7 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class AuthServer {
-	
+	//JDBC Custome Tables --poojitha
 	@Bean
 	public UserDetailsManager userDetailsManager(DataSource datasource) {
 		JdbcUserDetailsManager jdbcUserDetailsManager =new JdbcUserDetailsManager(datasource);
@@ -24,18 +24,7 @@ public class AuthServer {
 		
 	}
 	
-   /*
-	@Bean
-	public InMemoryUserDetailsManager userDetailsManager() {
-		UserDetails john = User.builder().username("john").password("{noop}test123").roles("EMPLOYEE").build();
-		UserDetails poojitha = User.builder().username("poojitha").password("{noop}poojitha")
-				.roles("EMPLOYEE", "MANAGER").build();
-		UserDetails sridher = User.builder().username("sridher").password("{noop}sridher").roles("EMPLOYEE").build();
-		UserDetails krishna = User.builder().username("krishna").password("{noop}krishna").roles("EMPLOYEE", "ADMIN")
-				.build();
-		return new InMemoryUserDetailsManager(john, poojitha, sridher, krishna);
-
-	}*/
+  //Auth Configuration Tables --poojitha
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
